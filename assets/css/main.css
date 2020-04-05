@@ -1,0 +1,14 @@
+.navbar {
+  /* color: #9a5680; */
+  box-shadow: 2px 2px 5px #000;
+  opacity: 0.9;
+}
+
+.navbar .nav-item .nav-link {
+  color: #fff;
+}
+
+.form-control, .btn{
+  border-radius: 20px;
+}
+
