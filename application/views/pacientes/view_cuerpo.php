@@ -26,12 +26,72 @@
                     </div>
 
                     <div class="card-body">
-                        <h5 class="card-title"> Light card title </h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <table class="table table-hover table-sm">
+                            <thead>
+                                <tr>
+                                    <th scope="col">DNI</th>
+                                    <th scope="col">Nombres y Apellidos</th>
+                                    <th scope="col">mail</th>
+                                    <th scope="col">Teléfono</th>
+                                    <th scope="col">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th scope="col">DNI</th>
+                                    <th scope="col">Nombres y Apellidos</th>
+                                    <th scope="col">mail</th>
+                                    <th scope="col">Teléfono</th>
+                                    <th scope="col">Acciones</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+
+                                <?php if(isset($datos)):?> <!-- Si no hay datos no hay nada que mostrar -->
+                                    <?php foreach ($datos as $registro): ?>
+
+                                        <tr>
+                                            <th scope="row"> <a href="<?= base_url('Pacientes/ficha/').$registro->id ?>"> <?= $registro->dni ?></a></th>
+                                            <td><?= $registro->nombres.' '.$registro->apellidos ?></td>
+                                            <td> <a href="mailto:<?= $registro->mail ?>"> <?= $registro->mail ?></a></td>
+                                            <td><?= $registro->tel1 ?></td>
+
+                                            <td> <!-- Acciones -->
+                                                <div class="btn-group mr-2" role="group" >
+                                                    <button type="button" class="btn btn-primary" data-toggle="tooltip" title="Ver Ficha">
+                                                        <a href="<?= base_url('Pacientes/ficha/'.$registro->id)?>"><i class="far fa-file-alt text-light" style='font-size:16px'></i></a>
+                                                    </button>
+                                                    <button type="button" class="btn btn-primary" data-toggle="tooltip" title="Editar">
+                                                        <a href="<?= base_url('Pacientes/editar/'.$registro->id)?>"><i class="fa fa-edit text-light" style='font-size:16px'></i></a>
+                                                    </button>
+                                                    <button type="button" class="btn btn-primary" data-toggle="tooltip" title="Eliminar">
+                                                        <a href="<?= base_url('Pacientes/baja/'.$registro->id)?>"onclick="return confirmar('Realmente desea ELIMINAR esta Profesional?')"><i class="fa fa-times text-light" style='font-size:16px'></i></a>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    
+                                    <?php endforeach; ?> 
+                                <?php endif; ?>
+
+                            </tbody>
+                        </table>
+                        <hr>
                     </div>
 
                     <div class="card-footer">
-                        pie de la tarjeta
+                        <div class="row"> <!-- Paginación y boton de añadir -->
+                            <div class="col-sm-8">
+                                <?= $this->pagination->create_links()?>
+                            </div>
+                            
+                            <div class="col-sm-4">
+                                <div class="row justify-content-end">
+                                    <a href="<?= base_url('Pacientes/formAlta') ?>"  class="btn btn-primary btn-block d-inline-block" tabindex="0" data-toggle="tooltip" title="Añade un paciente"><i class="fa fa-plus"></i>&nbsp;&nbsp;Paciente</a>
+                                </div>
+                            </div>
+                            
+                        </div>
                     </div>
 
                 </div>

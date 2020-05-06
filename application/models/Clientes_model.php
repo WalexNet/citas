@@ -26,12 +26,23 @@ class Clientes_model extends CI_Model {
     }
 
     // ------------------------------------------------------------------------
+    public function get_pacientes($offset = false, $limite = false)
+    {
+        $this->db->order_by('id', 'DESC');
+        $datos = $this->db->get('clientes', $limite, $offset);
+        return $datos->result();
+    }
 
+    public function total_pacientes()
+    {
+        $ssql = $this->db->query("SELECT COUNT(*) as TOTAL from clientes");
+        return $ssql->row();
+    }
 
     // ------------------------------------------------------------------------
 
     public function buscacli($mail, $psw)  {
-        return $this->db->get_where('clientes', array('mail' => $mail, 'psw' => $psw));
+        return $this->db->get_where('clientes', ['mail' => $mail, 'psw' => $psw]);
     }
 
     public function verificar($cv){
@@ -63,6 +74,30 @@ class Clientes_model extends CI_Model {
         $res = $this->db->get_where('clientes', array ($campo => $valor));
         $fila = $res->row();
         return (isset($fila)) ? true : false;
+    }
+
+    public function ficha($id)
+    {
+        $row = $this->db->get_where('clientes', ['id' => $id]);
+        return $row->row();
+    }
+
+    public function editFicha($id)
+    {
+        $datos['nombres']    = $this->input->post('nombre',TRUE);
+        $datos['apellidos']  = $this->input->post('apellido',TRUE);
+        $datos['dni']        = $this->input->post('dni',TRUE);
+        $datos['mail']       = $this->input->post('mail',TRUE);
+        $datos['dir']        = $this->input->post('direccion',TRUE);
+        $datos['cp']         = $this->input->post('cp',TRUE);
+        $datos['localidad']  = $this->input->post('localidad',TRUE);
+        $datos['provincia']  = $this->input->post('provincia',TRUE);
+        $datos['tel1']       = $this->input->post('tel1',TRUE);
+        $datos['tel2']       = $this->input->post('tel2',TRUE);
+        $datos['comentario'] = $this->input->post('comentario',TRUE);
+        $datos['verificado'] = isset($_POST['verificado']) ? 1 : 0;
+
+        $this->db->update('clientes',$datos, ['id' => $id]);
     }
 
     // ------------------------------------------------------------------------
