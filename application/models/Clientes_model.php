@@ -50,8 +50,11 @@ class Clientes_model extends CI_Model {
         $datos['provincia']  = $this->input->post('provincia',TRUE);
         $datos['tel1']       = $this->input->post('tel1',TRUE);
         $datos['tel2']       = $this->input->post('tel2',TRUE);
-        $datos['comentario'] = $this->input->post('comentario',TRUE);
         $datos['mailhash']   = $mh;
+        
+        if (isset($_POST['comentario'])) $datos['comentario'] = $this->input->post('comentario',TRUE);
+
+        
 
         $this->db->insert('clientes',$datos);
     }

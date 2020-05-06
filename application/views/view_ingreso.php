@@ -1,7 +1,7 @@
     <!-- INGRESO  -->
     <section id="newsletter" class=" text-white py-5" style="background-color: #9a5680;">
         <div class="container">
-            <?php if($this->session->logged !== true && $this->session->inicio == false): ?>
+            <?php if($errorRegistro): ?>
             <!-- Mensage de Error de registro -->
             <div class="row">
                 <div class="col">
@@ -19,17 +19,17 @@
 
             <!-- Mensaje error Mail existe -->
             <?php if($this->session->mail_existe == true): ?>
-            <div class="row">
-                <div class="col">
-                <div class="alert alert-warning" role="alert">
-                    <p class="text-center">El mail que ha ingresado ya <b>EXISTE</b> en nuestra base de datos</p>
-                    <p class="text-center">Vuelva a intentarlo <?= $this->session->mail_existe ?> </p>
-                    <a href="#">
-                    <p class="text-center"><button type="button" class="btn btn-light" data-toggle="modal" data-target="#formModal">Crear Cuenta</button></p>
-                    </a>
+                <div class="row">
+                    <div class="col">
+                    <div class="alert alert-warning" role="alert">
+                        <p class="text-center">El mail que ha ingresado ya <b>EXISTE</b> en nuestra base de datos</p>
+                        <p class="text-center">Vuelva a intentarlo <?= $this->session->mail_existe ?> </p>
+                        <a href="#">
+                        <p class="text-center"><button type="button" class="btn btn-light" data-toggle="modal" data-target="#formModal">Crear Cuenta</button></p>
+                        </a>
+                    </div>
+                    </div>
                 </div>
-                </div>
-            </div>
             <?php endif; ?>
 
             <!-- Mensaje error Mail no verificado -->
@@ -47,7 +47,7 @@
             </div>
             <?php endif; ?>
 
-            <form action="<?= base_url() ?>Inicio/entrar" method="post"> <!-- Ingreso -->
+            <form action="<?= base_url('Inicio/entrar') ?>" method="post"> <!-- Ingreso -->
                 <div class="row">
                     <div class="col-md-8">
                         <h4 class="text-white text-center">Ingrese sus Datos para poder solicitar turno</h4>
@@ -132,19 +132,20 @@
                     </div>
                     </div>
                     <div class="form-row">              <!-- telefonos 1 y 2 -->
-                    <div class="form-group col-md-6"> <!-- telefono 1 -->
-                        <label for="inputTel1">Tel&eacute;fono #1</label>
-                        <input type="text" class="form-control" id="inputTel1" placeholder="Fijo o Cell" name="tel1" required>
+                        <div class="form-group col-md-6"> <!-- telefono 1 -->
+                            <label for="inputTel1">Tel&eacute;fono #1</label>
+                            <input type="text" class="form-control" id="inputTel1" placeholder="Fijo o Cell" name="tel1" required>
+                        </div>
+                        <div class="form-group col-md-6"> <!-- telefono 2 -->
+                            <label for="inputTel2">Tel&eacute;fono #2</label>
+                            <input type="text" class="form-control" id="inputTel2" placeholder="Fijo o Cell" name="tel2">
+                        </div>
                     </div>
-                    <div class="form-group col-md-6"> <!-- telefono 2 -->
-                        <label for="inputTel2">Tel&eacute;fono #2</label>
-                        <input type="text" class="form-control" id="inputTel2" placeholder="Fijo o Cell" name="tel2">
-                    </div>
-                    </div>
-                    <div class="form-group">            <!-- Comentario -->
-                    <label for="ormControlTextarea1">Si desea puede exponer un breve comentario:</label>
-                    <textarea class="form-control" id="FormControlTextarea1" rows="3" name="comentario"></textarea>
-                    </div>
+                    <!-- Comentario -->
+                    <!-- <div class="form-group">            
+                        <label for="ormControlTextarea1">Si desea puede exponer un breve comentario:</label>
+                        <textarea class="form-control" id="FormControlTextarea1" rows="3" name="comentario"></textarea>
+                    </div> -->
 
                 </div>
                 <div class="modal-footer">

@@ -10,15 +10,10 @@
         <!-- FONT AWESOME -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
         <!-- CUSTOM CSS -->
-        <link rel="stylesheet" href="<?= base_url() ?>assets/css/main.css">
+        <link rel="stylesheet" href="<?= base_url('assets/css/main.css') ?>">
 
         <!-- CALENDAR CSS-->
-        <link href='<?= base_url() ?>assets/css/fullcalendar.css' rel='stylesheet' />
-
-        <!-- <link href='<?= base_url() ?>assets/css/core.main.css' rel='stylesheet' />
-        <link href='<?= base_url() ?>assets/css/daygrid.main.css' rel='stylesheet' />
-        <link href='<?= base_url() ?>assets/css/timegrid.main.css' rel='stylesheet' /> -->
-
+        <link href='<?= base_url('assets/css/fullcalendar.css') ?>' rel='stylesheet' />
 
     </head>
     <body>
@@ -57,9 +52,9 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
         <!-- CALENDAR SCRIPTS-->
-        <script src='<?= base_url() ?>assets/js/moment.min.js'></script>
-        <script src='<?= base_url() ?>assets/js/fullcalendar.min.js'></script>
-        <script src='<?= base_url() ?>assets/js/locales/es.js'></script>
+        <script src='<?= base_url('assets/js/moment.min.js') ?>'></script>
+        <script src='<?= base_url('assets/js/fullcalendar.min.js') ?>'></script>
+        <script src='<?= base_url('assets/js/locales/es.js') ?>'></script>
 
         <!-- MENSAJE DE ALERTA SI LO UBIESE -->
         <?= $mensaje ?>
