@@ -32,7 +32,7 @@
         <script src='<?= base_url('assets/js/fullcalendar.min.js') ?>'></script>
         <script src='<?= base_url('assets/js/locales/es.js') ?>'></script>
         <!-- Mis Funciones JS -->
-	<script src="<?= base_url('assets/js/misFunciones.js') ?>"></script>
+	    <script src="<?= base_url('assets/js/misFunciones.js') ?>"></script>
 
         <!-- MENSAJE DE ALERTA SI LO UBIESE -->
         <?= $mensaje ?>
