@@ -17,33 +17,9 @@
 
     </head>
     <body>
-        <!-- NAVIGATION (menu) -->
-        <?= $menu ?> 
-
-        <!-- HEADER -->
-        <?= $header ?>
-
-        <!-- CALENDARIO -->
-        <?= $calendario ?>
-
-        <!-- INGRESO  -->
-        <?= $ingreso ?>
-
-        <!-- SERVICIOS -->
-        <?= $servicios ?>
-
-        <!-- ACCORDEON -->
-        <?= $acordeon ?>
-
-        <!-- EMAIL -->
-        <?= $email ?>
-
-        <!-- CONTACTO -->
-        <?= $contacto ?>
-    
-
-        <!-- FOOTER -->
-        <?= $footer ?>
+        
+        <!-- CUERPO -->
+        <?= $cuerpo ?>
 
         <!-- BOOTSTRAP SCRIPTS -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script> 

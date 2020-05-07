@@ -37,25 +37,22 @@ class Inicio extends CI_Controller
 
     public function index()
     {
-        $data['errorRegistro'] = $this->errorRegistro;
-        // preparamos la vista principal
-        $this->page['menu']       = $this->load->view('view_menu','',true);
-        $this->page['header']     = $this->load->view('view_header','',true);
+        $cuerpo  = $this->load->view('view_menu','',true);
+        $cuerpo .= $this->load->view('view_header','',true);
 
-        if ( $this->session->logged && $this->session->verificado ) {
-            $this->page['ingreso'] = '';
-        }else{
-            $this->page['ingreso'] = $this->load->view('view_ingreso',$data,true);
+        $data['errorRegistro'] = $this->errorRegistro;
+        if ( !$this->session->logged && !$this->session->verificado ) {
+            $cuerpo .= $this->page['ingreso'] = $this->load->view('view_ingreso',$data,true);
         };
         
-        $this->page['servicios']  = $this->load->view('view_servicios','',true);
-        $this->page['acordeon']   = $this->load->view('view_acordeon','',true);
-        $this->page['email']      = $this->load->view('view_email','',true);
-        $this->page['contacto']   = $this->load->view('view_contacto','',true);
-        $this->page['footer']     = $this->load->view('view_footer','',true);
-        $this->page['calendario'] = '';
-        $this->page['calenjs']    = '';
-        $this->page['mensaje']    =  $this->session->alerta ? "<script> alert('Se le enviara un mail de verificacion'); </script>" : '';
+        $cuerpo .= $this->load->view('view_servicios','',true);
+        $cuerpo .= $this->load->view('view_acordeon','',true);
+        $cuerpo .= $this->load->view('view_email','',true);
+        $cuerpo .= $this->load->view('view_contacto','',true);
+        $cuerpo .= $this->load->view('view_footer','',true);
+        $this->page['cuerpo']   = $cuerpo;
+        $this->page['calenjs']  = '';
+        $this->page['mensaje']  =  $this->session->alerta ? "<script> alert('Se le enviara un mail de verificacion'); </script>" : '';
         $this->session->set_userdata('alerta',0);
 
         $this->load->view('view_inicio',$this->page);

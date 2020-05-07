@@ -15,7 +15,6 @@
                                 <form role="form" action="<?= base_url('Pacientes/buscar')?>" method="POST"> <!-- Formulario --> 
                                     <div class="input-group input-group-sm hidden-xs" >
                                         <input type="text" name="buscar_paciente" class="form-control" placeholder="Buscar por DNI o Nombre">
-
                                         <div class="input-group-btn">
                                             <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
                                         </div>
@@ -25,7 +24,7 @@
                         </div>
                     </div>
 
-                    <div class="card-body">
+                    <div class="card-body"> <!-- Tabla de pacientes -->
                         <table class="table table-hover table-sm">
                             <thead>
                                 <tr>
@@ -79,8 +78,8 @@
                         <hr>
                     </div>
 
-                    <div class="card-footer">
-                        <div class="row"> <!-- Paginación y boton de añadir -->
+                    <div class="card-footer"> <!-- Paginación y boton de añadir -->
+                        <div class="row"> 
                             <div class="col-sm-8">
                                 <?= $this->pagination->create_links()?>
                             </div>

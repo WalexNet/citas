@@ -32,7 +32,7 @@ class Pacientes extends CI_Controller
         // Cargamos Modelos
         $this->load->model('Clientes_model');
         // Comprabamos si hay Session
-        if (!$this->session->logged || $this->session->nivel==2) redirect('Inicio');
+        if (!$this->session->logged || $this->session->nivel == 2) redirect('Inicio');
         // Cargamos Librerias
         $this->load->library('pagination');
     }
@@ -64,7 +64,7 @@ class Pacientes extends CI_Controller
         if (($listado || $this->datos)) $this->data['datos'] = ($this->datos) ? $this->datos : $listado;
 
         // Seleccionamos el tipo de cuerpo de la vista
-        switch ($this->tipoVista){
+        switch ($this->tipoVista) {
             case 0:     // Listado
                 $plantilla = 'pacientes/view_cuerpo';
                 break;
@@ -83,30 +83,30 @@ class Pacientes extends CI_Controller
 
     public function vista($template)
     {
-        $this->page['menu']         = $this->load->view('view_menu','',true);
-        $this->page['header']       = ''; // $this->load->view('view_header','',true);
-        $this->page['ingreso']      = '';
-        $this->page['servicios']    = '';
-        $this->page['acordeon']     = '';
-        $this->page['email']        = $this->load->view($template, $this->data,true);
-        $this->page['contacto']     = '';
-        $this->page['calendario']   = '';
+
+        $cuerpo  = $this->load->view('view_menu', '', true);
+        $cuerpo .= $this->load->view($template, $this->data, true);
+        $cuerpo .= $this->load->view('view_footer', '', true);
+
+        $this->page['cuerpo'] = $cuerpo;
         $this->page['calenjs']      = '';
         $this->page['mensaje']      = '';
-        $this->page['footer']       = $this->load->view('view_footer','',true);
-        
-        $this->load->view('view_inicio',$this->page);
+        // $this->page['footer']       = $this->load->view('view_footer', '', true);
+
+        $this->load->view('view_inicio', $this->page);
     }
 
     // EDICION tipoVista -> 3 ------------------------------------------------------
-    public function editar($id){
+    public function editar($id)
+    {
         $this->tipoVista    = 3;
         $this->datos        = $this->Clientes_model->ficha($id);
 
         $this->index();
     }
 
-    public function modifica(){
+    public function modifica()
+    {
         $id = $_POST['id'];
         $this->Clientes_model->editFicha($id);
         $this->index();
@@ -114,23 +114,32 @@ class Pacientes extends CI_Controller
     // -----------------------------------------------------------------
 
     // ALTA tipoVista -> 2
-    public function formAlta(){
+    public function formAlta()
+    {
         $this->tipoVista = 2;
         $this->index();
     }
 
     // FICHA tipoVista -> 1
-    public function ficha($id){
+    public function ficha($id)
+    {
         $this->tipoVista = 1;
 
         $this->index();
     }
 
-    public function baja($id){
+    public function baja($id)
+    {
         $this->Clientes_model->del_ficha($id);
         $this->index();
     }
 
+    public function buscar()
+    {
+        $this->datos        = $this->Clientes_model->find_paciente();
+        $this->tipoVista    = 0;    // Listado
+        $this->index();             // Enviamos a la vista
+    }
 }
 
 
