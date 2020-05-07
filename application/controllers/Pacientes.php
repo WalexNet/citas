@@ -109,7 +109,7 @@ class Pacientes extends CI_Controller
     {
         $id = $_POST['id'];
         $this->Clientes_model->editFicha($id);
-        $this->index();
+        $this->editar($id);
     }
     // -----------------------------------------------------------------
 
@@ -123,8 +123,8 @@ class Pacientes extends CI_Controller
     // FICHA tipoVista -> 1
     public function ficha($id)
     {
-        $this->tipoVista = 1;
-
+        $this->tipoVista    = 1;
+        $this->datos        = $this->Clientes_model->ficha($id);
         $this->index();
     }
 

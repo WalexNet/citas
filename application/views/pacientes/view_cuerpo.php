@@ -13,7 +13,7 @@
                             
                             <div class="col-sm-6"> <!-- Formulario Busqueda --> 
                                 <form role="form" action="<?= base_url('Pacientes/buscar')?>" method="POST"> <!-- Formulario --> 
-                                    <div class="input-group input-group-sm hidden-xs" >
+                                    <div class="input-group input-group-sm hidden-xs">
                                         <input type="text" name="buscar_paciente" class="form-control" placeholder="Buscar por DNI o Nombre">
                                         <div class="input-group-btn">
                                             <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
@@ -64,7 +64,7 @@
                                                         <a href="<?= base_url('Pacientes/editar/'.$registro->id)?>"><i class="fa fa-edit text-light" style='font-size:16px'></i></a>
                                                     </button>
                                                     <button type="button" class="btn btn-primary" data-toggle="tooltip" title="Eliminar">
-                                                        <a href="<?= base_url('Pacientes/baja/'.$registro->id)?>"onclick="return confirmar('Realmente desea ELIMINAR esta Profesional?')"><i class="fa fa-times text-light" style='font-size:16px'></i></a>
+                                                        <a href="<?= base_url('Pacientes/baja/'.$registro->id)?>"onclick="return confirmar('Realmente desea ELIMINAR a <?= $registro->nombres ?>?')"><i class="fa fa-times text-light" style='font-size:16px'></i></a>
                                                     </button>
                                                 </div>
                                             </td>

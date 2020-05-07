@@ -23,7 +23,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Inicio extends CI_Controller
 {
     // Propiedades
-    //private $okingreso = true;
     private $page           = [];
     private $errorRegistro  = false;
         

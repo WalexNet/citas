@@ -186,7 +186,8 @@
                         <div class="card-footer">
                             <div class="row"> <!-- Boton del formulario -->
                                 <div class="col-sm-8">
-                                    <button type="submit" class="btn btn-primary">Modificar</button>
+                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                    <a href="<?= base_url('Pacientes/ficha/').$datos->id ?>" type="button" class="btn btn-secondary">Ver Ficha</a>
                                     <a href="<?= base_url('Pacientes') ?>" type="button" class="btn btn-secondary">Salir</a>
                                 </div>
                                 
