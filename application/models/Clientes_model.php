@@ -100,6 +100,10 @@ class Clientes_model extends CI_Model {
         $this->db->update('clientes',$datos, ['id' => $id]);
     }
 
+    public function del_ficha($id)
+    {
+        return $this->db->delete('clientes', ['id'=>$id]);
+    }
     // ------------------------------------------------------------------------
 
 }

@@ -126,6 +126,11 @@ class Pacientes extends CI_Controller
         $this->index();
     }
 
+    public function baja($id){
+        $this->Clientes_model->del_ficha($id);
+        $this->index();
+    }
+
 }
 
 
