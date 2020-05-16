@@ -34,8 +34,6 @@ class Clientes_model extends CI_Model
         return $datos->result();
     }
 
- 
-
     public function total_pacientes()
     {
         $ssql = $this->db->query("SELECT COUNT(*) as TOTAL from clientes");
@@ -70,8 +68,6 @@ class Clientes_model extends CI_Model
         $datos['mailhash']   = $mh;
 
         if (isset($_POST['comentario'])) $datos['comentario'] = $this->input->post('comentario', TRUE);
-
-
 
         $this->db->insert('clientes', $datos);
     }
@@ -114,7 +110,7 @@ class Clientes_model extends CI_Model
 
     public function find_paciente()
     {
-        $busqueda   = $this->input->post('buscar_paciente',true);
+        $busqueda = $this->input->post('buscar_paciente',true);
 
         $this->db->or_like('nombres', $busqueda);
         $this->db->or_like('apellidos', $busqueda);

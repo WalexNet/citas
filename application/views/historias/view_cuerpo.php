@@ -12,9 +12,9 @@
                             </div>
                             
                             <div class="col-sm-6"> <!-- Formulario Busqueda --> 
-                                <form role="form" action="<?= base_url('Historias/buscar')?>" method="POST"> <!-- Formulario --> 
+                                <form role="form" action="<?= base_url('Historial/buscar')?>" method="POST"> <!-- Formulario --> 
                                     <div class="input-group input-group-sm hidden-xs">
-                                        <input type="text" name="buscar_paciente" class="form-control" placeholder="Buscar por DNI o Nombre">
+                                        <input type="text" name="buscar" class="form-control" placeholder="Buscar por DNI o Nombre">
                                         <div class="input-group-btn">
                                             <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
                                         </div>
@@ -30,8 +30,8 @@
                                 <tr>
                                     <th scope="col">DNI</th>
                                     <th scope="col">Nombres y Apellidos</th>
-                                    <th scope="col">mail</th>
-                                    <th scope="col">Teléfono</th>
+                                    <th scope="col">Fecha</th>
+                                    <th scope="col">Descripción</th>
                                     <th scope="col">Acciones</th>
                                 </tr>
                             </thead>
@@ -39,8 +39,8 @@
                                 <tr>
                                     <th scope="col">DNI</th>
                                     <th scope="col">Nombres y Apellidos</th>
-                                    <th scope="col">mail</th>
-                                    <th scope="col">Teléfono</th>
+                                    <th scope="col">Fecha</th>
+                                    <th scope="col">Descripción</th>
                                     <th scope="col">Acciones</th>
                                 </tr>
                             </tfoot>
@@ -50,15 +50,15 @@
                                     <?php foreach ($datos as $registro): ?>
 
                                         <tr>
-                                            <th scope="row"> <a href="<?= base_url('Historias/ficha/').$registro->id ?>"> <?= $registro->dni ?></a></th>
+                                            <th scope="row"> <?= $registro->dni ?> </th>
                                             <td><?= $registro->nombres.' '.$registro->apellidos ?></td>
-                                            <td><?= $registro->mail ?></td>
-                                            <td><?= $registro->tel1 ?></td>
+                                            <td><?= date('d-m-Y H:i',strtotime($registro->fecha)) ?></td>
+                                            <td><?= $registro->tituloNota ?></td>
 
                                             <td> <!-- Acciones -->
                                                 <div class="btn-group mr-2" role="group" >
                                                     <button type="button" class="btn btn-primary" data-toggle="tooltip" title="Ver Historial">
-                                                        <a href="<?= base_url('Historias/historial/'.$registro->id)?>"><i class="far fa-file-alt text-light" style='font-size:16px'></i></a>
+                                                        <a href="<?= base_url('Historial/ficha/'.$registro->idhistoria)?>"><i class="far fa-file-alt text-light" style='font-size:16px'></i></a>
                                                     </button>
                                                 </div>
                                             </td>

@@ -149,13 +149,13 @@
                                     <?php foreach ($datos as $registro): ?>
 
                                         <tr>
-                                            <td><?= $registro->Fecha?></td>
+                                            <td><?= date('d-m-Y H:i',strtotime($registro->fecha)) ?></td>
                                             <td><?= $registro->tituloNota ?></td>
 
                                             <td> <!-- Acciones -->
                                                 <div class="btn-group mr-2" role="group" >
                                                     <button type="button" class="btn btn-primary" data-toggle="tooltip" title="Ver Informe">
-                                                        <a href="<?= base_url('Pacientes/historia/'.$registro->idhistoria)?>"><i class="far fa-file-alt text-light" style='font-size:16px'></i></a>
+                                                        <a href="<?= base_url('Historial/ficha/'.$registro->idhistoria)?>"><i class="far fa-file-alt text-light" style='font-size:16px'></i></a>
                                                     </button>
                                                 </div>
                                             </td>
@@ -171,7 +171,7 @@
                     <div class="card-footer">
                         <div class="row"> <!-- Paginación y boton de añadir -->
                             <div class="col-sm-8">
-                                <!-- una nota -->
+                                <a href="<?= base_url('Pacientes') ?>" type="button" class="btn btn-secondary">Salir</a>
                             </div>
                             
                             <div class="col-sm-4">

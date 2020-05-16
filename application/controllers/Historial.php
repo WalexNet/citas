@@ -102,6 +102,34 @@ class Historial extends CI_Controller
         $this->datos     = $this->Clientes_model->ficha($idCliente);
         $this->index();
     }
+
+    public function addHistoria()
+    {
+        $id = $this->input->post('id', TRUE);
+        // $f = $this->input->post('fecha', TRUE);
+        // $h = $this->input->post('hora', TRUE);
+        // echo $f.' '.$h;
+        $this->Historias_model->add_historia($id);
+        redirect('Pacientes/ficha/'.$id);
+    }
+
+    // Form Alta tipoVista = 1
+    public function ficha($id)
+    {
+        $this->tipoVista = 1;
+        $this->datos     = $this->Historias_model->get_ficha($id);
+        // print_r($this->datos);
+        $this->index();
+
+    }
+
+    public function buscar()
+    {
+        $this->tipoVista = 0;
+        $busqueda       = $this->input->post('buscar', TRUE);
+        $this->datos    = $this->Historias_model->find($busqueda);
+        $this->index();
+    }
 }
 
 
