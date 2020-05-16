@@ -19,6 +19,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Agenda extends CI_Controller
 {
+    // Propiedades
+    private $page  = [];
 
     public function __construct()
     {
@@ -31,23 +33,24 @@ class Agenda extends CI_Controller
 
     public function index()
     {
-        $data['probando'] = "WalexNet";
-        // 
         // preparamos la vista calenadario
-        $page['menu']       = $this->load->view('view_menu', $data, true);
-        $page['header']     = $this->load->view('view_header', '', true);
-        $page['calendario'] = $this->load->view('view_calendario', '', true);
-        $page['ingreso']    = '';
-        $page['servicios']  = '';
-        $page['acordeon']   = '';
-        $page['email']      = '';
-        $page['contacto']   = $this->load->view('view_contacto', '', true);
-        $page['footer']     = $this->load->view('view_footer', '', true);
-        $page['calenjs']    = $this->load->view('view_calscript', '', true);
-        $page['mensaje']    = '';
+        $cuerpo  = $this->load->view('view_menu', '', true);
+        $cuerpo .= $this->load->view('view_header', '', true);
+        $cuerpo .= $this->load->view('view_calendario', '', true);
+        $cuerpo .= $this->load->view('view_contacto', '', true);
+        $cuerpo .= $this->load->view('view_footer', '', true);
 
-        $this->load->view('view_inicio', $page);
+        $this->page['cuerpo']   = $cuerpo;
+        $this->page['calenjs']  = $this->load->view('view_calscript', '', true);
+        $this->page['mensaje']  = '';
+
+        $this->vista();
     }
+
+    public function vista()
+    {
+        $this->load->view('view_inicio',$this->page);
+    }    
 
     public function load()
     {

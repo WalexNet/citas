@@ -34,6 +34,8 @@ class Clientes_model extends CI_Model
         return $datos->result();
     }
 
+ 
+
     public function total_pacientes()
     {
         $ssql = $this->db->query("SELECT COUNT(*) as TOTAL from clientes");
@@ -83,8 +85,8 @@ class Clientes_model extends CI_Model
 
     public function ficha($id)
     {
-        $row = $this->db->get_where('clientes', ['id' => $id]);
-        return $row->row();
+        $row = $this->db->get_where('todohistorias', ['id' => $id]);
+        return $row->result();
     }
 
     public function editFicha($id)

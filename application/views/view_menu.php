@@ -25,7 +25,7 @@
                                 <a class="dropdown-item" href="<?= base_url('Pacientes') ?>">Pacientes</a>
                                 <a class="dropdown-item" href="<?= base_url('#') ?>">Turnos Pendientes</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="<?= base_url('#') ?>">Historias Clínicas</a>
+                                <a class="dropdown-item" href="<?= base_url('Historial') ?>">Historias Clínicas</a>
                             </div>
                         </li>
                     <?php endif; ?>

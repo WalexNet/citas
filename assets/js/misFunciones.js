@@ -3,6 +3,7 @@
  * FUNCIONES DE USO GERAL PARA CONFIRMAR ACCIONES Y VALIDAR PSW
  */
 
+$('#jg').summernote();
 
 function confirmar(msg)
 {
@@ -23,4 +24,6 @@ function ValidarPsw() {
     }
     return true;
 }
+
+
 

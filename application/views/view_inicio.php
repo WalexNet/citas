@@ -12,6 +12,9 @@
         <!-- CUSTOM CSS -->
         <link rel="stylesheet" href="<?= base_url('assets/css/main.css') ?>">
 
+        <!-- bootstrap wysihtml5 - text editor -->
+        <link rel="stylesheet" href="<?= base_url('assets/css/summernote-bs4.min.css') ?>">
+
         <!-- CALENDAR CSS-->
         <link href='<?= base_url('assets/css/fullcalendar.css') ?>' rel='stylesheet' />
 
@@ -31,6 +34,11 @@
         <script src='<?= base_url('assets/js/moment.min.js') ?>'></script>
         <script src='<?= base_url('assets/js/fullcalendar.min.js') ?>'></script>
         <script src='<?= base_url('assets/js/locales/es.js') ?>'></script>
+
+        <!-- SUMMER NOTE -->
+        <script src="<?= base_url('assets/js/summernote-bs4.min.js') ?>"></script>
+        <script src="<?= base_url('assets/js/summernote-es-ES.min.js') ?>"></script>
+
         <!-- Mis Funciones JS -->
 	    <script src="<?= base_url('assets/js/misFunciones.js') ?>"></script>
 

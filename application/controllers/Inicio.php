@@ -54,13 +54,13 @@ class Inicio extends CI_Controller
         $this->page['mensaje']  =  $this->session->alerta ? "<script> alert('Se le enviara un mail de verificacion'); </script>" : '';
         $this->session->set_userdata('alerta',0);
 
-        $this->load->view('view_inicio',$this->page);
+        $this->vista();
         
     }
 
     public function vista()
     {
-        // $this->load->view('view_inicio',$this->page);
+        $this->load->view('view_inicio',$this->page);
     }
 
     public function entrar()
