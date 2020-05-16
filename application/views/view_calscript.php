@@ -23,7 +23,7 @@
                 allDaySlot: false,
                 forceEventDuration: true, 
                 defaultTimedEventDuration:'00:45:00', // forsamos la duracion del evento a 30min
-                slotDuration: '00:55:00',             // Mostramos citas cada 15min
+                slotDuration: '01:00:00',             // Mostramos citas cada 15min
                 minTime: '16:00:00',                  // Citas disponibles a partir de las 16:00
                 maxTime: '19:15:00',                  // hasta las 19:15
                 

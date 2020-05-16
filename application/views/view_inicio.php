@@ -10,45 +10,19 @@
         <!-- FONT AWESOME -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
         <!-- CUSTOM CSS -->
-        <link rel="stylesheet" href="<?= base_url() ?>assets/css/main.css">
+        <link rel="stylesheet" href="<?= base_url('assets/css/main.css') ?>">
+
+        <!-- bootstrap wysihtml5 - text editor -->
+        <link rel="stylesheet" href="<?= base_url('assets/css/summernote-bs4.min.css') ?>">
 
         <!-- CALENDAR CSS-->
-        <link href='<?= base_url() ?>assets/css/fullcalendar.css' rel='stylesheet' />
-
-        <!-- <link href='<?= base_url() ?>assets/css/core.main.css' rel='stylesheet' />
-        <link href='<?= base_url() ?>assets/css/daygrid.main.css' rel='stylesheet' />
-        <link href='<?= base_url() ?>assets/css/timegrid.main.css' rel='stylesheet' /> -->
-
+        <link href='<?= base_url('assets/css/fullcalendar.css') ?>' rel='stylesheet' />
 
     </head>
     <body>
-        <!-- NAVIGATION (menu) -->
-        <?= $menu ?> 
-
-        <!-- HEADER -->
-        <?= $header ?>
-
-        <!-- CALENDARIO -->
-        <?= $calendario ?>
-
-        <!-- INGRESO  -->
-        <?= $ingreso ?>
-
-        <!-- SERVICIOS -->
-        <?= $servicios ?>
-
-        <!-- ACCORDEON -->
-        <?= $acordeon ?>
-
-        <!-- EMAIL -->
-        <?= $email ?>
-
-        <!-- CONTACTO -->
-        <?= $contacto ?>
-    
-
-        <!-- FOOTER -->
-        <?= $footer ?>
+        
+        <!-- CUERPO -->
+        <?= $cuerpo ?>
 
         <!-- BOOTSTRAP SCRIPTS -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script> 
@@ -57,9 +31,16 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
         <!-- CALENDAR SCRIPTS-->
-        <script src='<?= base_url() ?>assets/js/moment.min.js'></script>
-        <script src='<?= base_url() ?>assets/js/fullcalendar.min.js'></script>
-        <script src='<?= base_url() ?>assets/js/locales/es.js'></script>
+        <script src='<?= base_url('assets/js/moment.min.js') ?>'></script>
+        <script src='<?= base_url('assets/js/fullcalendar.min.js') ?>'></script>
+        <script src='<?= base_url('assets/js/locales/es.js') ?>'></script>
+
+        <!-- SUMMER NOTE -->
+        <script src="<?= base_url('assets/js/summernote-bs4.min.js') ?>"></script>
+        <script src="<?= base_url('assets/js/summernote-es-ES.min.js') ?>"></script>
+
+        <!-- Mis Funciones JS -->
+	    <script src="<?= base_url('assets/js/misFunciones.js') ?>"></script>
 
         <!-- MENSAJE DE ALERTA SI LO UBIESE -->
         <?= $mensaje ?>

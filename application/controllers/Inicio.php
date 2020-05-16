@@ -9,6 +9,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
  * This controller for ...
  * 
  * He cambiado el archivo estoy en la rama desarrollo de git
+ * otra prueba
  *
  * @package   CodeIgniter
  * @category  Controller CI
@@ -22,39 +23,44 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Inicio extends CI_Controller
 {
     // Propiedades
-    //private $okingreso = true;
+    private $page           = [];
+    private $errorRegistro  = false;
         
     public function __construct()
     { 
         parent::__construct();
+        // Cargamos Modelos
         $this->load->model('Clientes_model');
-        $sesdata['inicio'] = true;
-        $this->session->set_userdata($sesdata);
+        // Comprabamos si hay Session
     }
 
     public function index()
     {
-        // preparamos la vista principal
-        $page['menu']       = $this->load->view('view_menu','',true);
-        $page['header']     = $this->load->view('view_header','',true);
+        $cuerpo  = $this->load->view('view_menu','',true);
+        $cuerpo .= $this->load->view('view_header','',true);
 
-        if ( $this->session->logged && $this->session->verificado ) {
-            $page['ingreso'] = '';
-        }else{
-            $page['ingreso'] = $this->load->view('view_ingreso','',true);
+        $data['errorRegistro'] = $this->errorRegistro;
+        if ( !$this->session->logged && !$this->session->verificado ) {
+            $cuerpo .= $this->page['ingreso'] = $this->load->view('view_ingreso',$data,true);
         };
         
-        $page['servicios']  = $this->load->view('view_servicios','',true);
-        $page['acordeon']   = $this->load->view('view_acordeon','',true);
-        $page['email']      = $this->load->view('view_email','',true);
-        $page['contacto']   = $this->load->view('view_contacto','',true);
-        $page['footer']     = $this->load->view('view_footer','',true);
-        $page['calendario'] = '';
-        $page['calenjs']    = '';
-        $page['mensaje']    =  $this->session->alerta ? "<script> alert('Se le enviara un mail de verificacion'); </script>" : '';
+        $cuerpo .= $this->load->view('view_servicios','',true);
+        $cuerpo .= $this->load->view('view_acordeon','',true);
+        $cuerpo .= $this->load->view('view_email','',true);
+        $cuerpo .= $this->load->view('view_contacto','',true);
+        $cuerpo .= $this->load->view('view_footer','',true);
+        $this->page['cuerpo']   = $cuerpo;
+        $this->page['calenjs']  = '';
+        $this->page['mensaje']  =  $this->session->alerta ? "<script> alert('Se le enviara un mail de verificacion'); </script>" : '';
         $this->session->set_userdata('alerta',0);
+
+        $this->vista();
         
-        $this->load->view('view_inicio',$page);
+    }
+
+    public function vista()
+    {
+        $this->load->view('view_inicio',$this->page);
     }
 
     public function entrar()
@@ -82,19 +88,18 @@ class Inicio extends CI_Controller
             $sesdata['id']          = $id;
             $sesdata['verificado']  = $verificado;
             $sesdata['logged']      = true;
-            $sesdata['inicio']      = false;
             $sesdata['mail_existe'] = false;
 
             $this->session->set_userdata($sesdata);
 
-            if ($verificado){
+            if ($verificado && ($nivel == 2)){
                 redirect('Agenda');
             }else{
-                $this->index();
+                redirect('Inicio');
+                // $this->index();
             }
         }else{ // Si no existe mostramos mensaje de error y ofrecemos darse de alta o que vuelva a ingresar los datos
-            $sesdata['inicio'] = false;
-            $this->session->set_userdata($sesdata);
+           $this->errorRegistro = true;
         }
         $this->index();
     }
@@ -102,7 +107,7 @@ class Inicio extends CI_Controller
     public function salir()
     {
         $this->session->sess_destroy();
-        redirect('Inicio/index');
+        redirect('Inicio');
     }
 
 
